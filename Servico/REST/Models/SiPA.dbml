@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SiPA" Class="SiPADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IURY-NOTEBOOK\ILDEVELOPER;Initial Catalog=SiPA;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SiPAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Fornecedor" Member="Fornecedors">
+    <Type Name="Fornecedor">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="telefone" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cidade" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="endereco" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cpf" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cnpj" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="opCPForCNPJ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Fornecedor_Compra" Member="Compras" AccessModifier="Internal" ThisKey="id" OtherKey="fornecedor_id" Type="Compra" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemCompra" Member="ItemCompras">
+    <Type Name="ItemCompra">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="produto_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="compra_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="unidade" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="quantidade" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="precoUnitario" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valorTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Produto_ItemCompra" Member="Produto" AccessModifier="Internal" ThisKey="produto_id" OtherKey="id" Type="Produto" IsForeignKey="true" />
+      <Association Name="Compra_ItemCompra" Member="Compra" AccessModifier="Internal" ThisKey="compra_id" OtherKey="id" Type="Compra" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produto" Member="Produtos">
+    <Type Name="Produto">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Produto_ItemCompra" Member="ItemCompras" AccessModifier="Internal" ThisKey="id" OtherKey="produto_id" Type="ItemCompra" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Compra" Member="Compras">
+    <Type Name="Compra">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fornecedor_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataCompra" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="desconto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valorTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Compra_ItemCompra" Member="ItemCompras" AccessModifier="Internal" ThisKey="id" OtherKey="compra_id" Type="ItemCompra" />
+      <Association Name="Fornecedor_Compra" Member="Fornecedor" AccessModifier="Internal" ThisKey="fornecedor_id" OtherKey="id" Type="Fornecedor" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
