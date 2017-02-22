@@ -33,15 +33,15 @@ namespace SiPA
     partial void InsertProduto(Produto instance);
     partial void UpdateProduto(Produto instance);
     partial void DeleteProduto(Produto instance);
-    partial void InsertItemCompra(ItemCompra instance);
-    partial void UpdateItemCompra(ItemCompra instance);
-    partial void DeleteItemCompra(ItemCompra instance);
     partial void InsertCompra(Compra instance);
     partial void UpdateCompra(Compra instance);
     partial void DeleteCompra(Compra instance);
     partial void InsertFornecedor(Fornecedor instance);
     partial void UpdateFornecedor(Fornecedor instance);
     partial void DeleteFornecedor(Fornecedor instance);
+    partial void InsertItemCompra(ItemCompra instance);
+    partial void UpdateItemCompra(ItemCompra instance);
+    partial void DeleteItemCompra(ItemCompra instance);
     #endregion
 		
 		public BancoDataContext() : 
@@ -82,14 +82,6 @@ namespace SiPA
 			}
 		}
 		
-		public System.Data.Linq.Table<ItemCompra> ItemCompras
-		{
-			get
-			{
-				return this.GetTable<ItemCompra>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Compra> Compras
 		{
 			get
@@ -103,6 +95,14 @@ namespace SiPA
 			get
 			{
 				return this.GetTable<Fornecedor>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ItemCompra> ItemCompras
+		{
+			get
+			{
+				return this.GetTable<ItemCompra>();
 			}
 		}
 	}
@@ -176,7 +176,7 @@ namespace SiPA
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Produto_ItemCompra", Storage="_ItemCompras", ThisKey="id", OtherKey="produto_id")]
-		internal EntitySet<ItemCompra> ItemCompras
+		public EntitySet<ItemCompra> ItemCompras
 		{
 			get
 			{
@@ -218,294 +218,6 @@ namespace SiPA
 		{
 			this.SendPropertyChanging();
 			entity.Produto = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ItemCompra")]
-	public partial class ItemCompra : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _produto_id;
-		
-		private System.Nullable<int> _compra_id;
-		
-		private string _unidade;
-		
-		private System.Nullable<double> _quantidade;
-		
-		private System.Nullable<double> _precoUnitario;
-		
-		private string _valorTotal;
-		
-		private EntityRef<Produto> _Produto;
-		
-		private EntityRef<Compra> _Compra;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onproduto_idChanging(System.Nullable<int> value);
-    partial void Onproduto_idChanged();
-    partial void Oncompra_idChanging(System.Nullable<int> value);
-    partial void Oncompra_idChanged();
-    partial void OnunidadeChanging(string value);
-    partial void OnunidadeChanged();
-    partial void OnquantidadeChanging(System.Nullable<double> value);
-    partial void OnquantidadeChanged();
-    partial void OnprecoUnitarioChanging(System.Nullable<double> value);
-    partial void OnprecoUnitarioChanged();
-    partial void OnvalorTotalChanging(string value);
-    partial void OnvalorTotalChanged();
-    #endregion
-		
-		public ItemCompra()
-		{
-			this._Produto = default(EntityRef<Produto>);
-			this._Compra = default(EntityRef<Compra>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_produto_id", DbType="Int")]
-		public System.Nullable<int> produto_id
-		{
-			get
-			{
-				return this._produto_id;
-			}
-			set
-			{
-				if ((this._produto_id != value))
-				{
-					if (this._Produto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproduto_idChanging(value);
-					this.SendPropertyChanging();
-					this._produto_id = value;
-					this.SendPropertyChanged("produto_id");
-					this.Onproduto_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_compra_id", DbType="Int")]
-		public System.Nullable<int> compra_id
-		{
-			get
-			{
-				return this._compra_id;
-			}
-			set
-			{
-				if ((this._compra_id != value))
-				{
-					if (this._Compra.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Oncompra_idChanging(value);
-					this.SendPropertyChanging();
-					this._compra_id = value;
-					this.SendPropertyChanged("compra_id");
-					this.Oncompra_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_unidade", DbType="VarChar(MAX)")]
-		public string unidade
-		{
-			get
-			{
-				return this._unidade;
-			}
-			set
-			{
-				if ((this._unidade != value))
-				{
-					this.OnunidadeChanging(value);
-					this.SendPropertyChanging();
-					this._unidade = value;
-					this.SendPropertyChanged("unidade");
-					this.OnunidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantidade", DbType="Float")]
-		public System.Nullable<double> quantidade
-		{
-			get
-			{
-				return this._quantidade;
-			}
-			set
-			{
-				if ((this._quantidade != value))
-				{
-					this.OnquantidadeChanging(value);
-					this.SendPropertyChanging();
-					this._quantidade = value;
-					this.SendPropertyChanged("quantidade");
-					this.OnquantidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precoUnitario", DbType="Float")]
-		public System.Nullable<double> precoUnitario
-		{
-			get
-			{
-				return this._precoUnitario;
-			}
-			set
-			{
-				if ((this._precoUnitario != value))
-				{
-					this.OnprecoUnitarioChanging(value);
-					this.SendPropertyChanging();
-					this._precoUnitario = value;
-					this.SendPropertyChanged("precoUnitario");
-					this.OnprecoUnitarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valorTotal", DbType="VarChar(MAX)")]
-		public string valorTotal
-		{
-			get
-			{
-				return this._valorTotal;
-			}
-			set
-			{
-				if ((this._valorTotal != value))
-				{
-					this.OnvalorTotalChanging(value);
-					this.SendPropertyChanging();
-					this._valorTotal = value;
-					this.SendPropertyChanged("valorTotal");
-					this.OnvalorTotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Produto_ItemCompra", Storage="_Produto", ThisKey="produto_id", OtherKey="id", IsForeignKey=true)]
-		internal Produto Produto
-		{
-			get
-			{
-				return this._Produto.Entity;
-			}
-			set
-			{
-				Produto previousValue = this._Produto.Entity;
-				if (((previousValue != value) 
-							|| (this._Produto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Produto.Entity = null;
-						previousValue.ItemCompras.Remove(this);
-					}
-					this._Produto.Entity = value;
-					if ((value != null))
-					{
-						value.ItemCompras.Add(this);
-						this._produto_id = value.id;
-					}
-					else
-					{
-						this._produto_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Produto");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Compra_ItemCompra", Storage="_Compra", ThisKey="compra_id", OtherKey="id", IsForeignKey=true)]
-		internal Compra Compra
-		{
-			get
-			{
-				return this._Compra.Entity;
-			}
-			set
-			{
-				Compra previousValue = this._Compra.Entity;
-				if (((previousValue != value) 
-							|| (this._Compra.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Compra.Entity = null;
-						previousValue.ItemCompras.Remove(this);
-					}
-					this._Compra.Entity = value;
-					if ((value != null))
-					{
-						value.ItemCompras.Add(this);
-						this._compra_id = value.id;
-					}
-					else
-					{
-						this._compra_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Compra");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -1039,6 +751,294 @@ namespace SiPA
 		{
 			this.SendPropertyChanging();
 			entity.Fornecedor = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ItemCompra")]
+	public partial class ItemCompra : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _produto_id;
+		
+		private System.Nullable<int> _compra_id;
+		
+		private string _unidade;
+		
+		private System.Nullable<double> _quantidade;
+		
+		private System.Nullable<double> _precoUnitario;
+		
+		private System.Nullable<double> _valorTotal;
+		
+		private EntityRef<Compra> _Compra;
+		
+		private EntityRef<Produto> _Produto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproduto_idChanging(System.Nullable<int> value);
+    partial void Onproduto_idChanged();
+    partial void Oncompra_idChanging(System.Nullable<int> value);
+    partial void Oncompra_idChanged();
+    partial void OnunidadeChanging(string value);
+    partial void OnunidadeChanged();
+    partial void OnquantidadeChanging(System.Nullable<double> value);
+    partial void OnquantidadeChanged();
+    partial void OnprecoUnitarioChanging(System.Nullable<double> value);
+    partial void OnprecoUnitarioChanged();
+    partial void OnvalorTotalChanging(System.Nullable<double> value);
+    partial void OnvalorTotalChanged();
+    #endregion
+		
+		public ItemCompra()
+		{
+			this._Compra = default(EntityRef<Compra>);
+			this._Produto = default(EntityRef<Produto>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_produto_id", DbType="Int")]
+		public System.Nullable<int> produto_id
+		{
+			get
+			{
+				return this._produto_id;
+			}
+			set
+			{
+				if ((this._produto_id != value))
+				{
+					if (this._Produto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduto_idChanging(value);
+					this.SendPropertyChanging();
+					this._produto_id = value;
+					this.SendPropertyChanged("produto_id");
+					this.Onproduto_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_compra_id", DbType="Int")]
+		public System.Nullable<int> compra_id
+		{
+			get
+			{
+				return this._compra_id;
+			}
+			set
+			{
+				if ((this._compra_id != value))
+				{
+					if (this._Compra.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncompra_idChanging(value);
+					this.SendPropertyChanging();
+					this._compra_id = value;
+					this.SendPropertyChanged("compra_id");
+					this.Oncompra_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_unidade", DbType="VarChar(MAX)")]
+		public string unidade
+		{
+			get
+			{
+				return this._unidade;
+			}
+			set
+			{
+				if ((this._unidade != value))
+				{
+					this.OnunidadeChanging(value);
+					this.SendPropertyChanging();
+					this._unidade = value;
+					this.SendPropertyChanged("unidade");
+					this.OnunidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantidade", DbType="Float")]
+		public System.Nullable<double> quantidade
+		{
+			get
+			{
+				return this._quantidade;
+			}
+			set
+			{
+				if ((this._quantidade != value))
+				{
+					this.OnquantidadeChanging(value);
+					this.SendPropertyChanging();
+					this._quantidade = value;
+					this.SendPropertyChanged("quantidade");
+					this.OnquantidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precoUnitario", DbType="Float")]
+		public System.Nullable<double> precoUnitario
+		{
+			get
+			{
+				return this._precoUnitario;
+			}
+			set
+			{
+				if ((this._precoUnitario != value))
+				{
+					this.OnprecoUnitarioChanging(value);
+					this.SendPropertyChanging();
+					this._precoUnitario = value;
+					this.SendPropertyChanged("precoUnitario");
+					this.OnprecoUnitarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valorTotal", DbType="Float")]
+		public System.Nullable<double> valorTotal
+		{
+			get
+			{
+				return this._valorTotal;
+			}
+			set
+			{
+				if ((this._valorTotal != value))
+				{
+					this.OnvalorTotalChanging(value);
+					this.SendPropertyChanging();
+					this._valorTotal = value;
+					this.SendPropertyChanged("valorTotal");
+					this.OnvalorTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Compra_ItemCompra", Storage="_Compra", ThisKey="compra_id", OtherKey="id", IsForeignKey=true)]
+		internal Compra Compra
+		{
+			get
+			{
+				return this._Compra.Entity;
+			}
+			set
+			{
+				Compra previousValue = this._Compra.Entity;
+				if (((previousValue != value) 
+							|| (this._Compra.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Compra.Entity = null;
+						previousValue.ItemCompras.Remove(this);
+					}
+					this._Compra.Entity = value;
+					if ((value != null))
+					{
+						value.ItemCompras.Add(this);
+						this._compra_id = value.id;
+					}
+					else
+					{
+						this._compra_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Compra");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Produto_ItemCompra", Storage="_Produto", ThisKey="produto_id", OtherKey="id", IsForeignKey=true)]
+		public Produto Produto
+		{
+			get
+			{
+				return this._Produto.Entity;
+			}
+			set
+			{
+				Produto previousValue = this._Produto.Entity;
+				if (((previousValue != value) 
+							|| (this._Produto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Produto.Entity = null;
+						previousValue.ItemCompras.Remove(this);
+					}
+					this._Produto.Entity = value;
+					if ((value != null))
+					{
+						value.ItemCompras.Add(this);
+						this._produto_id = value.id;
+					}
+					else
+					{
+						this._produto_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Produto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

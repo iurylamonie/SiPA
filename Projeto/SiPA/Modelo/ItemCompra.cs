@@ -22,5 +22,30 @@ namespace SiPA.Modelo
                                         select it).ToList();
             return ic;
         }
+
+        public static void Excluir(int id)
+        {
+            try
+            {
+                BancoDataContext dc = new BancoDataContext();
+                List<SiPA.ItemCompra> ic = (from i in dc.ItemCompras where i.compra_id == id select i).ToList();
+                dc.ItemCompras.DeleteAllOnSubmit(ic);
+                dc.SubmitChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
+
+        public static void Remover(int id)
+        {
+            BancoDataContext dc = new BancoDataContext();
+            SiPA.ItemCompra ic = (from i in dc.ItemCompras where i.id == id select i).Single();
+            dc.ItemCompras.DeleteOnSubmit(ic);
+            dc.SubmitChanges();
+        }
     }
 }

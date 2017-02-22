@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div>
-        <asp:button runat="server" text="Incluir" id="ButtonIncluir"/>
+        <asp:button runat="server" text="Incluir" id="ButtonIncluir" OnClick="ButtonIncluir_Click"/>
         <asp:button runat="server" text="Atualizar Dados" id="ButtonAtualizar"  />        
     </div>
     
@@ -33,15 +33,37 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridViewCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceCompras">
+        <asp:GridView ID="GridViewCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceCompras" OnRowCommand="GridViewCompras_RowCommand">
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="Código" SortExpression="id" />
                 <asp:BoundField DataField="dataCompra" HeaderText="Data" SortExpression="dataCompra" />
                 <asp:BoundField DataField="Fornecedor.nome" HeaderText="Fornecedor" SortExpression="Fornecedor.nome" />
                 <asp:BoundField DataField="desconto" HeaderText="Desconto" SortExpression="desconto" />
                 <asp:BoundField DataField="valorTotal" HeaderText="Valor Total" SortExpression="valorTotal" />
+                <asp:ButtonField CommandName="Selecionar" Text="Selecionar" />
+                <asp:ButtonField CommandName="Alterar" Text="Alterar" />
+                <asp:ButtonField CommandName="Excluir" Text="Excluir" />
             </Columns>
         </asp:GridView>
         <asp:ObjectDataSource ID="ObjectDataSourceCompras" runat="server" SelectMethod="Listar" TypeName="SiPA.Modelo.Compra"></asp:ObjectDataSource>
+    </div>
+
+    <div>
+        <asp:Label ID="Label4" runat="server" text="ITENS DA COMPRA" />
+        <asp:GridView ID="GridViewItens" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceItens">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="Código" SortExpression="id" />
+                <asp:BoundField DataField="produto_id" HeaderText="Produto" SortExpression="produto_id" />
+                <asp:BoundField DataField="unidade" HeaderText="Unidade" SortExpression="unidade" />
+                <asp:BoundField DataField="quantidade" HeaderText="Quantidade" SortExpression="quantidade" />
+                <asp:BoundField DataField="precoUnitario" HeaderText="Preço Unitário" SortExpression="precoUnitario" />
+                <asp:BoundField DataField="valorTotal" HeaderText="Valor Total" SortExpression="valorTotal" />
+            </Columns>
+        </asp:GridView>
+        <asp:ObjectDataSource ID="ObjectDataSourceItens" runat="server" SelectMethod="Listar" TypeName="SiPA.Modelo.ItemCompra">
+            <SelectParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
     </div>
 </asp:Content>

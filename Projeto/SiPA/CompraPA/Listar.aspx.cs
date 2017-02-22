@@ -25,5 +25,18 @@ namespace SiPA.CompraPA
             }
 
         }
+
+        protected void ButtonIncluir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CompraPA/Incluir.aspx");
+        }
+
+        protected void GridViewCompras_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Selecionar")
+            {
+                
+            }
+        }
     }
 }

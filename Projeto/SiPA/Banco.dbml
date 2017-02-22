@@ -4,20 +4,7 @@
     <Type Name="Produto">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Association Name="Produto_ItemCompra" Member="ItemCompras" AccessModifier="Internal" ThisKey="id" OtherKey="produto_id" Type="ItemCompra" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ItemCompra" Member="ItemCompras">
-    <Type Name="ItemCompra">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="produto_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="compra_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="unidade" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="quantidade" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="precoUnitario" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="valorTotal" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Produto_ItemCompra" Member="Produto" AccessModifier="Internal" ThisKey="produto_id" OtherKey="id" Type="Produto" IsForeignKey="true" />
-      <Association Name="Compra_ItemCompra" Member="Compra" AccessModifier="Internal" ThisKey="compra_id" OtherKey="id" Type="Compra" IsForeignKey="true" />
+      <Association Name="Produto_ItemCompra" Member="ItemCompras" ThisKey="id" OtherKey="produto_id" Type="ItemCompra" />
     </Type>
   </Table>
   <Table Name="dbo.Compra" Member="Compras">
@@ -44,6 +31,19 @@
       <Column Name="opCPForCNPJ" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Fornecedor_Compra" Member="Compras" ThisKey="id" OtherKey="fornecedor_id" Type="Compra" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemCompra" Member="ItemCompras">
+    <Type Name="ItemCompra">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="produto_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="compra_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="unidade" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="quantidade" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="precoUnitario" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valorTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Compra_ItemCompra" Member="Compra" AccessModifier="Internal" ThisKey="compra_id" OtherKey="id" Type="Compra" IsForeignKey="true" />
+      <Association Name="Produto_ItemCompra" Member="Produto" ThisKey="produto_id" OtherKey="id" Type="Produto" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -8,6 +8,7 @@ namespace SiPA.Modelo
 {
     public class Compra
     {
+        public static double valorTotalCompra;
         public static void Incluir(SiPA.Compra compra)
         {
             BancoDataContext dc = new BancoDataContext();
@@ -21,7 +22,12 @@ namespace SiPA.Modelo
             SiPA.Compra r = (from c in dc.Compras
                              where c.id == compra.id
                              select c).Single();
-            r = compra;
+
+            r.fornecedor_id = compra.fornecedor_id;
+            r.dataCompra = compra.dataCompra;
+            r.desconto = compra.desconto;
+            r.valorTotal = compra.valorTotal;
+
             dc.SubmitChanges();
         }
 
@@ -29,6 +35,7 @@ namespace SiPA.Modelo
         {
             BancoDataContext dc = new BancoDataContext();
             SiPA.Compra compra = (from c in dc.Compras where c.id == id select c).Single();
+            Modelo.ItemCompra.Excluir(id);
             dc.Compras.DeleteOnSubmit(compra);
             dc.SubmitChanges();
         }

@@ -67,8 +67,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompraPA\AdicionarItens.aspx" />
     <Content Include="CompraPA\Incluir.aspx" />
     <Content Include="CompraPA\Listar.aspx" />
+    <Content Include="CompraPA\Session.txt" />
     <Content Include="FornecedorPA\Alterar.aspx" />
     <Content Include="FornecedorPA\Incluir.aspx" />
     <Content Include="FornecedorPA\Listar.aspx" />
@@ -100,6 +102,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Banco.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="CompraPA\AdicionarItens.aspx.cs">
+      <DependentUpon>AdicionarItens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompraPA\AdicionarItens.aspx.designer.cs">
+      <DependentUpon>AdicionarItens.aspx</DependentUpon>
     </Compile>
     <Compile Include="CompraPA\Incluir.aspx.cs">
       <DependentUpon>Incluir.aspx</DependentUpon>

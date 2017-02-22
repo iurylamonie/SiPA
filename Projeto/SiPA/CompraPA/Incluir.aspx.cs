@@ -9,7 +9,6 @@ namespace SiPA.CompraPA
 {
     public partial class Incluir : System.Web.UI.Page
     {
-        private SiPA.Compra compra;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,10 +19,7 @@ namespace SiPA.CompraPA
 
         protected void ButtonConfirmar_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                compra = new Compra
+            SiPA.Compra compra = new Compra
                 {
                     fornecedor_id = int.Parse(DropDownListFornecedor.SelectedValue.ToString()),
                     dataCompra = DateTime.Now.Date,
@@ -31,36 +27,9 @@ namespace SiPA.CompraPA
                 };
                 Modelo.Compra.Incluir(compra);
                 compra = Modelo.Compra.RetornarUltima();
-
-                DropDownListFornecedor.Enabled = false;
-
-                Label3.Visible = true;
-                Label4.Visible = true;
-                DropDownListProdutos.Visible = true;
-                Label5.Visible = true;
-                TextBoxUnidade.Visible = true;
-                Label6.Visible = true;
-                TextBoxQuantidade.Visible = true;
-                Label7.Visible = true;
-                TextBoxPrecoUnitario.Visible = true;
-                Label8.Visible = true;
-                TextBoxValorTotal.Visible = true;
-                ButtonIncluir.Visible = true;
-                GridViewItens.Visible = true;
-                Label9.Visible = true;
-                TextBoxDesconto.Visible = true;
-                Label10.Visible = true;
-                TextBoxValorTotalCompra.Visible = true;
-                ButtonGravar.Visible = true;
-                ButtonCancelar.Visible = true;
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
+            Session["com-id"] = compra.id;
+            Response.Redirect("~/CompraPA/AdicionarItens.aspx");
+    }
 
         protected void ButtonCancelarCompra_Click(object sender, EventArgs e)
         {
