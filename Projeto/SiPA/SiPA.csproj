@@ -67,21 +67,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompraPA\Incluir.aspx" />
+    <Content Include="CompraPA\Listar.aspx" />
     <Content Include="FornecedorPA\Alterar.aspx" />
     <Content Include="FornecedorPA\Incluir.aspx" />
     <Content Include="FornecedorPA\Listar.aspx" />
     <Content Include="FornecedorPA\Session.txt" />
     <Content Include="packages.config" />
-    <Content Include="Banco.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Banco.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="ProdutoPA\Alterar.aspx" />
     <Content Include="ProdutoPA\Incluir.aspx" />
     <Content Include="ProdutoPA\Listar.aspx" />
     <Content Include="ProdutoPA\Session.txt" />
     <Content Include="SiPAMaster.Master" />
+    <Content Include="Banco.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Banco.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\SiPAApp.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -97,6 +100,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Banco.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="CompraPA\Incluir.aspx.cs">
+      <DependentUpon>Incluir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompraPA\Incluir.aspx.designer.cs">
+      <DependentUpon>Incluir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompraPA\Listar.aspx.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompraPA\Listar.aspx.designer.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
     </Compile>
     <Compile Include="FornecedorPA\Alterar.aspx.cs">
       <DependentUpon>Alterar.aspx</DependentUpon>
@@ -161,7 +178,6 @@
       <DependentUpon>Banco.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

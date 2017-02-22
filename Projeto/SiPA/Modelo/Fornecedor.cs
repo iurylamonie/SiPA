@@ -21,7 +21,18 @@ namespace SiPA.Modelo
             var r = (from p in dataContext.Fornecedors
                      where p.id == fornecedor.id
                      select p).Single();
-            r = fornecedor;
+
+            r.nome = fornecedor.nome;
+            r.telefone = fornecedor.telefone;
+            r.cidade = fornecedor.cidade;
+            r.estado = fornecedor.estado;
+            r.endereco = fornecedor.endereco;
+            r.cpf = fornecedor.cpf;
+            r.cnpj = fornecedor.cnpj;
+            r.opCPForCNPJ = fornecedor.opCPForCNPJ;
+            r.email = fornecedor.email;
+
+
             dataContext.SubmitChanges();
         }
 

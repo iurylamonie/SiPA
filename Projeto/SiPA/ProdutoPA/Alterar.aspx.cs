@@ -13,6 +13,7 @@ namespace SiPA.ProdutoPA
         {
             if (!IsPostBack)
             {
+                
                 TextBoxId.Text = Session["prd-id"].ToString();
                 TextBoxDescricao.Text = Session["prd-descricao"].ToString();
             }

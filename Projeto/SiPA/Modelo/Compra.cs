@@ -44,11 +44,31 @@ namespace SiPA.Modelo
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<SiPA.Compra> Filtro(string fornecedor, DateTime periodo)
         {
-            BancoDataContext dc = new BancoDataContext();
-            List<SiPA.Compra> compras = (from com in dc.Compras
-                                         where com.Fornecedor.nome == fornecedor && com.dataCompra == periodo
-                                         select com).ToList();
-            return compras;
+            try
+            {
+                BancoDataContext dc = new BancoDataContext();
+                List<SiPA.Compra> compras = (from com in dc.Compras
+                                             where com.Fornecedor.nome == fornecedor && com.dataCompra == periodo
+                                             select com).ToList();
+                return compras;
+            }
+            catch (Exception)
+            {
+
+                List<SiPA.Compra> compras = new List<SiPA.Compra>();
+                return compras;
+            }
+            
         }
+
+        public static SiPA.Compra RetornarUltima()
+        {
+            BancoDataContext dc = new BancoDataContext();
+            var r = (from c in dc.Compras
+                     orderby c.id descending
+                     select c).FirstOrDefault();
+            return r;
+        }
+
     }
 }
