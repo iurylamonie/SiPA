@@ -3,8 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <asp:button runat="server" text="Incluir" id="ButtonIncluir" OnClick="ButtonIncluir_Click" />
-        <asp:button runat="server" text="Atualizar Dados" id="ButtonAtualizar"  />        
+        <asp:button CssClass="btn btn-success" runat="server" text="Incluir" id="ButtonIncluir" OnClick="ButtonIncluir_Click" />
+        <asp:button CssClass="btn btn-default" runat="server" text="Atualizar Dados" id="ButtonAtualizar"  />        
     </div>
 
     <div>
@@ -13,9 +13,9 @@
                 <asp:BoundField DataField="id" HeaderText="Código" SortExpression="id" />
                 <asp:BoundField DataField="nome" HeaderText="Nome" SortExpression="nome" />
                 <asp:BoundField DataField="telefone" HeaderText="Telefones" SortExpression="telefone" />
-                <asp:ButtonField CommandName="Selecionar" Text="Selecionar" />
-                <asp:ButtonField CommandName="Alterar" Text="Alterar" />
-                <asp:ButtonField CommandName="Excluir" Text="Excluir" />
+                <asp:ButtonField ControlStyle-CssClass="btn btn-success" CommandName="Selecionar" Text="Selecionar" />
+                <asp:ButtonField ControlStyle-CssClass="btn btn-info" CommandName="Alterar" Text="Alterar" />
+                <asp:ButtonField ControlStyle-CssClass="btn btn-danger" CommandName="Excluir" Text="Excluir" />
             </Columns>
         </asp:GridView>    
         <asp:ObjectDataSource ID="ObjectDataSourceFornecedores" runat="server" SelectMethod="Lista" TypeName="SiPA.Modelo.Fornecedor"></asp:ObjectDataSource>
@@ -23,15 +23,15 @@
 
     <div>
         <asp:Label ID="Label1" runat="server" Text="Endereço: "></asp:Label>
-        <asp:Label ID="LabelEndereco" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="LabelEndereco" runat="server" Text=""></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="Label3" runat="server" Text="Cidade: "></asp:Label>
-        <asp:Label ID="LabelCidade" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="LabelCidade" runat="server" Text=""></asp:Label>
         <br />
         <asp:Label ID="Label5" runat="server" Text="CPF/CNPJ: "></asp:Label>
-        <asp:Label ID="LabelCPFCNPJ" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="LabelCPFCNPJ" runat="server" Text=""></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="Label7" runat="server" Text="E-mail: "></asp:Label>
-        <asp:Label ID="LabelEmail" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="LabelEmail" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>

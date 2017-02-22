@@ -10,7 +10,7 @@
     </div>
 
     <div>
-        <asp:Button ID="ButtonCancelar" runat="server" Text="Cancelar" OnClick="ButtonCancelar_Click" />
-        <asp:Button ID="ButtonAlterar" runat="server" Text="Alterar" OnClick="ButtonAlterar_Click" />
+        <asp:Button CssClass="btn btn-default" ID="ButtonCancelar" runat="server" Text="Cancelar" OnClick="ButtonCancelar_Click" />
+        <asp:Button CssClass="btn btn-success" ID="ButtonAlterar" runat="server" Text="Alterar" OnClick="ButtonAlterar_Click" />
     </div>
 </asp:Content>

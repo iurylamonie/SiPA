@@ -10,7 +10,7 @@
     <div>
         <asp:Label ID="Label1" runat="server" Text="Filtrar por:" /> <br />
         <asp:Label ID="Label2" runat="server" Text="Fornecedor" /> 
-        <asp:RadioButtonList ID="RadioButtonListEscolha" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonListEscolha_SelectedIndexChanged">
+        <asp:RadioButtonList ID="RadioButtonListEscolha" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonListEscolha_SelectedIndexChanged" AutoPostBack="True">
             <asp:ListItem>Todos</asp:ListItem>
             <asp:ListItem Value="Especifico">Específico</asp:ListItem>
         </asp:RadioButtonList>
@@ -29,11 +29,11 @@
             <WeekendDayStyle BackColor="#CCCCFF" />
         </asp:Calendar>
         <asp:ObjectDataSource ID="ObjectDataSourceFornecedores" runat="server" SelectMethod="Lista" TypeName="SiPA.Modelo.Fornecedor"></asp:ObjectDataSource>
-        <asp:Button ID="ButtonPesquisar" runat="server" Text="Pesquisar" />    
+        <asp:Button ID="ButtonPesquisar" runat="server" Text="Pesquisar" OnClick="ButtonPesquisar_Click" />    
     </div>
 
     <div>
-        <asp:GridView ID="GridViewCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceCompras" OnRowCommand="GridViewCompras_RowCommand">
+        <asp:GridView ID="GridViewCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceCompras" visible="false" OnRowCommand="GridViewCompras_RowCommand">
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="Código" SortExpression="id" />
                 <asp:BoundField DataField="dataCompra" HeaderText="Data" SortExpression="dataCompra" />
@@ -66,4 +66,10 @@
             </SelectParameters>
         </asp:ObjectDataSource>
     </div>
+    <asp:ObjectDataSource ID="ObjectDataSourceComprasEspecifica" runat="server" SelectMethod="Filtro" TypeName="SiPA.Modelo.Compra">
+        <SelectParameters>
+            <asp:SessionParameter Name="fornecedor" SessionField="esp-fornecedor" Type="String" />
+            <asp:SessionParameter Name="periodo" SessionField="esp-periodo" Type="DateTime" />
+        </SelectParameters>
+     </asp:ObjectDataSource>
 </asp:Content>

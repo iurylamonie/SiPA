@@ -25,7 +25,7 @@
     </div>
 
     <div>
-        <asp:Button ID="ButtonCancelar" runat="server" Text="Cancelar" OnClick="ButtonCancelar_Click" />
-        <asp:Button ID="ButtonIncluir" runat="server" Text="Incluir" OnClick="ButtonIncluir_Click" />
+        <asp:Button CssClass="btn btn-default" ID="ButtonCancelar" runat="server" Text="Cancelar" OnClick="ButtonCancelar_Click" />
+        <asp:Button CssClass="btn btn-success" ID="ButtonIncluir" runat="server" Text="Incluir" OnClick="ButtonIncluir_Click" />
     </div>
 </asp:Content>

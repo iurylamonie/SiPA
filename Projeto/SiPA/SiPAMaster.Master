@@ -5,14 +5,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/jquery-1.11.3.min.js" type="text/javascript"></script>   
+    <script src="~/js/bootstrap.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div><h1>SiPA</h1>
-            <hr />
+    <div >
+        <div class="navbar navbar-inverse"><h1>SiPA</h1>
+        <asp:Button CssClass="btn btn-default" ID="ButtonProduto" runat="server" Text="Produto" OnClick="ButtonProduto_Click" />
+        <asp:Button CssClass="btn btn-default" ID="ButtonFornecedor" runat="server" Text="Fornecedor" OnClick="ButtonFornecedor_Click" />
+        <asp:Button CssClass="btn btn-default" ID="ButtonCompra" runat="server" Text="Compra" OnClick="ButtonCompra_Click" />
+
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

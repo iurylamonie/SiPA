@@ -13,5 +13,20 @@ namespace SiPA
         {
 
         }
+
+        protected void ButtonProduto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProdutoPA/Listar.aspx");
+        }
+
+        protected void ButtonFornecedor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/FornecedorPA/Listar.aspx");
+        }
+
+        protected void ButtonCompra_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CompraPA/Listar.aspx");
+        }
     }
 }
